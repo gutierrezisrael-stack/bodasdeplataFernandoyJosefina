@@ -140,15 +140,15 @@ body{
   letter-spacing:0.3px;
 }
 
-/* --- FOTO CON MARCO DORADO --- */
-.gold-frame{
-  display:block;
-  margin:30px auto 10px;
-  max-width:90%;
-  border:6px solid transparent;
-  border-image:linear-gradient(135deg,#d4af37,#f6e27a,#c19a2b) 1;
-  border-radius:15px;
-  box-shadow:0 5px 20px rgba(200,150,40,0.2);
+/* --- MINIATURAS PARA MÓVIL --- */
+.mini-thumb{
+  display:none;
+  width:90%;
+  max-width:300px;
+  border:4px solid #d4af37;
+  border-radius:12px;
+  margin:0 auto 15px;
+  box-shadow:0 4px 12px rgba(200,150,50,0.2);
 }
 
 /* --- LINKS Y BOTONES --- */
@@ -217,52 +217,26 @@ footer{
   .hero{background-attachment:scroll!important;}
   .info{padding:50px 15px;}
   .info section{padding:25px 15px;}
-  .gold-frame{max-width:100%;border-width:4px;}
 }
 
-/* 🔧 Ajuste móvil: fotos alineadas verticalmente */
+/* --- MÓVIL: MINIATURAS Y SIN FOTOS LATERALES --- */
 @media (max-width:600px){
   .hero{
     background-size:cover;
     background-position:center center;
     background-attachment:scroll;
-    min-height:100vh;
+    min-height:calc(var(--vh,1vh)*100);
     display:flex;
     justify-content:center;
     align-items:center;
     overflow:hidden;
   }
-  .decor{
-    width:42vw;
-    max-width:180px;
-    opacity:0.4;
-    position:absolute;
-    top:50%;
-    transform:translateY(-50%) rotate(var(--r,0deg));
-    object-fit:cover;
-  }
-  .decor.top-left{
-    left:-10px;
-    transform:translateY(-50%) rotate(-6deg);
-  }
-  .decor.bottom-right{
-    right:-10px;
-    transform:translateY(-50%) rotate(6deg);
-  }
-  .hero h1{
-    font-size:2.3rem;
-    line-height:1.2;
-  }
-  .hero p{
-    font-size:0.95rem;
-    padding:0 15px;
-  }
+  .decor{display:none;}
+  .mini-thumb{display:block;}
 }
 
-/* ✅ Ajuste anti-espacio blanco móvil */
-:root {
-  --vh: 1vh;
-}
+/* ✅ Fix espacio blanco móvil */
+:root { --vh: 1vh; }
 @media (max-width:1024px){
   .hero{
     height:calc(var(--vh,1vh)*100);
@@ -288,6 +262,7 @@ footer{
 
 <div class="info">
   <section>
+    <img src="bda1.png" alt="Ceremonia" class="mini-thumb">
     <h2>Ceremonia Religiosa</h2>
     <p>Les esperamos el <strong>22 de noviembre a las 4:00 PM</strong> en la<br>
     <strong>Capilla de Nuestra Señora de la Asunción</strong><br>
@@ -296,13 +271,14 @@ footer{
   </section>
 
   <section>
+    <img src="bda3.png" alt="Comida de Celebración" class="mini-thumb">
     <h2>Comida de Celebración</h2>
     <p>Después de la misa, acompáñanos a compartir una comida familiar<br>
     en <strong>Avenida Halcón 4, Colonia Central Michoacana, Ecatepec de Morelos</strong>.</p>
-    <img src="bda4.jpeg" alt="Foto de la familia" class="gold-frame">
   </section>
 
   <section>
+    <img src="bda4.jpeg" alt="Foto de la familia" class="mini-thumb">
     <h2>Confirma tu Asistencia</h2>
     <p>Tu presencia es el mejor regalo que podemos recibir.</p>
     <a class="button" href="https://wa.me/5215516569477?text=Confirmo%20mi%20asistencia%20a%20las%20Bodas%20de%20Oro%20de%20Josefina%20y%20Fernando%20💛" target="_blank">Confirmar por WhatsApp</a>
