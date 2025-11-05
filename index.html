@@ -197,17 +197,32 @@ footer{
   letter-spacing:0.3px;
 }
 
-/* Animaciones */
-@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
-@keyframes fadeDown{from{opacity:0;transform:translateY(-30px)}to{opacity:1;transform:translateY(0)}}
+/* --- OPTIMIZACIÓN RESPONSIVA --- */
+@media (max-width: 768px) {
+  .hero { height:auto; padding:80px 15px; background-attachment:scroll; background-size:cover; background-position:center; }
+  .hero h1 { font-size:2.8rem; letter-spacing:0.5px; }
+  .hero p { font-size:1.05rem; line-height:1.6; }
+  .decor { width:150px; opacity:0.35; }
+  .info { padding:60px 15px; }
+  .info section { padding:25px 15px; margin:25px 0; }
+  .info h2 { font-size:1.5rem; margin-bottom:10px; }
+  .info p { font-size:1rem; line-height:1.6; }
+  .button { padding:10px 25px; font-size:0.95rem; }
+  footer { font-size:0.9rem; padding:30px 15px; }
+}
+@media (max-width: 480px) {
+  .hero h1 { font-size:2.3rem; }
+  .hero p { font-size:1rem; }
+  .decor { width:120px; opacity:0.3; }
+  .info h2 { font-size:1.3rem; }
+  .button { padding:9px 20px; }
+}
 </style>
 </head>
 <body>
 
-<!-- Fondo collage -->
 <div class="bg-collage"></div>
 
-<!-- Portada -->
 <div class="hero">
   <img src="bda1.png" class="decor top-left" style="--r:-8deg;--r2:-3deg;">
   <img src="bda4.jpeg" class="decor middle-right" style="--r:5deg;--r2:-2deg;">
@@ -220,14 +235,13 @@ footer{
   a celebrar 25 años de amor y unión.</p>
 </div>
 
-<!-- Información -->
 <div class="info">
   <section>
     <h2>Ceremonia Religiosa</h2>
     <p>Les esperamos el <strong>22 de noviembre a las 4:00 PM</strong> en la<br>
     <strong>Capilla de Nuestra Señora de la Asunción</strong><br>
     Av. Lázaro Cárdenas 34, Central Michoacana, Ecatepec de Morelos, Méx.</p>
-    <a href="https://www.google.com/maps/place/Capilla+de+Nuestra+Se%C3%B1ora+de+La+Asuncion,+Av.+L%C3%A1zaro+C%C3%A1rdenas+34,+Central+Michoacana,+55170+Ecatepec+de+Morelos,+M%C3%A9x./data=!4m2!3m1!1s0x85d1fb72516bddc1:0x8614cd76f0778df5" target="_blank">Ver ubicación 📍</a>
+    <a href="https://www.google.com/maps/place/Capilla+de+Nuestra+Se%C3%B1ora+de+La+Asuncion,+Av.+L%C3%A1zaro+C%C3%A1rdenas+34,+Central+Michoacana,+55170+Ecatepec+de+Morelos,+M%C3%A9x." target="_blank">Ver ubicación 📍</a>
   </section>
 
   <section>
@@ -239,7 +253,10 @@ footer{
   <section>
     <h2>Confirma tu Asistencia</h2>
     <p>Tu presencia es el mejor regalo que podemos recibir.</p>
-    <a class="button" href="https://wa.me/?text=Confirmo%20mi%20asistencia%20a%20las%20Bodas%20de%20Plata%20de%20Josefina%20y%20Fernando%20💍" target="_blank">Confirmar por WhatsApp</a>
+    <a class="button" href="https://wa.me/5215516569477?text=Confirmo%20mi%20asistencia%20a%20las%20Bodas%20de%20Plata%20de%20Josefina%20y%20Fernando%20💍" target="_blank">
+      Confirmar por WhatsApp
+    </a>
+    <p style="margin-top:10px;font-size:0.95rem;color:#666;">(Contacto: Israel Gutiérrez Maldonado)</p>
   </section>
 </div>
 
@@ -248,7 +265,6 @@ footer{
 </footer>
 
 <script>
-/* Rosas plateadas cayendo */
 for(let i=0;i<25;i++){
   const rose=document.createElement('img');
   rose.src='rosa.png';
