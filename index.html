@@ -15,93 +15,60 @@ body{
   position:relative;
 }
 
+/* --- FONDO GENERAL --- */
+.bg-collage{
+  position:fixed;
+  top:0; left:0;
+  width:100%; height:100%;
+  background:url('bda2.jpeg') center/400px repeat fixed;
+  filter:grayscale(15%) brightness(1.05) sepia(40%) hue-rotate(15deg);
+  opacity:0.25;
+  z-index:0;
+}
+
 /* --- HERO --- */
 .hero{
   position:relative;
   min-height:100vh;
-  background:linear-gradient(rgba(255,248,230,0.8),rgba(255,250,240,0.9)),
-             url('bda6.jpg') center/cover no-repeat fixed;
+  background:linear-gradient(rgba(255,250,230,0.8),rgba(255,250,230,0.9)),
+             url('bda6.jpg') center/cover no-repeat;
   display:flex;
   flex-direction:column;
   justify-content:center;
   align-items:center;
   text-align:center;
+  z-index:2;
   overflow:hidden;
 }
-.hero::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:radial-gradient(circle at top,rgba(255,255,230,0.25),rgba(255,248,200,0.65));
-  animation:shimmer 10s infinite alternate;
-}
-@keyframes shimmer{from{opacity:.8}to{opacity:1}}
-
-/* --- EFECTO DORADO --- */
 .hero h1{
   font-family:'Great Vibes',cursive;
-  font-size:clamp(2.5rem,7vw,4.5rem);
+  font-size:3.8rem;
   background:linear-gradient(120deg,#c19a2b 0%,#f6e27a 25%,#d4af37 50%,#f7e98e 75%,#b88a00 100%);
   background-size:300% 300%;
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
-  animation:shine 8s linear infinite, fadeDown 2s ease;
+  animation:shine 8s linear infinite;
   text-shadow:0 3px 6px rgba(180,150,50,0.25);
   font-weight:700;
   letter-spacing:1px;
-  z-index:2;
 }
 @keyframes shine{
   0%{background-position:0% 50%;}
   50%{background-position:100% 50%;}
   100%{background-position:0% 50%;}
 }
-
 .hero p{
   font-family:'Playfair Display',serif;
-  font-size:clamp(1rem,3.2vw,1.25rem);
+  font-size:1.2rem;
   color:#5b4a00;
   font-weight:500;
   margin-top:15px;
-  z-index:2;
-  animation:fadeUp 2s ease;
   line-height:1.6;
 }
 .line{
   width:120px;height:2px;
   background:linear-gradient(to right,#d4af37,#f6e27a,#d4af37);
   margin:20px auto;
-  z-index:2;
-}
-
-/* --- FOTOS EN LAS ESQUINAS --- */
-.decor{
-  position:absolute;
-  width:clamp(120px,28vw,280px);
-  opacity:0.45;
-  z-index:1;
-  filter:drop-shadow(0 4px 6px rgba(0,0,0,0.15));
-  animation:float 6s ease-in-out infinite alternate;
-}
-.decor.top-left{top:-30px;left:-30px;transform:rotate(-8deg);}
-.decor.bottom-right{bottom:-30px;right:-30px;transform:rotate(10deg);}
-@keyframes float{
-  0%{transform:translateY(0) rotate(var(--r,0deg));}
-  100%{transform:translateY(10px) rotate(var(--r2,5deg));}
-}
-
-/* --- FONDO COLLAGE --- */
-.bg-collage{
-  position:fixed;
-  top:0; left:0;
-  width:100%; height:100%;
-  background-image:url('bda2.jpeg');
-  background-size:400px;
-  background-repeat:repeat;
-  background-attachment:fixed;
-  filter:grayscale(10%) brightness(1.05) sepia(40%) hue-rotate(15deg);
-  opacity:0.25;
-  z-index:0;
 }
 
 /* --- CONTENIDO --- */
@@ -109,61 +76,56 @@ body{
   position:relative;
   z-index:2;
   text-align:center;
-  padding:clamp(60px,10vw,100px) 20px;
+  padding:70px 20px;
   max-width:900px;
   margin:auto;
 }
 .info section{
-  background:rgba(255,250,235,0.92);
+  background:rgba(255,250,235,0.95);
   border-radius:20px;
   box-shadow:0 10px 25px rgba(200,150,50,0.1);
-  margin:clamp(20px,6vw,40px) 0;
-  padding:clamp(25px,6vw,40px) 25px;
-  backdrop-filter:blur(5px);
-  animation:fadeUp 1.5s ease;
+  margin:40px 0;
+  padding:40px 25px;
+  backdrop-filter:blur(6px);
 }
 .info h2{
   font-family:'Playfair Display',serif;
-  font-size:clamp(1.4rem,5vw,2rem);
+  font-size:1.8rem;
   background:linear-gradient(135deg,#d4af37,#f7e98e,#c19a2b);
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
   font-weight:700;
-  letter-spacing:0.6px;
   margin-bottom:15px;
 }
 .info p{
-  font-size:clamp(1rem,3.8vw,1.15rem);
-  line-height:1.9;
+  font-size:1.05rem;
+  line-height:1.8;
   color:#4a3b00;
   font-weight:500;
-  letter-spacing:0.3px;
 }
 
-/* --- MINIATURAS MÓVIL --- */
-.mini-thumb{
-  display:none;
-  width:90%;
-  max-width:300px;
-  border:4px solid #d4af37;
+/* --- FOTOS CON MARCO DORADO --- */
+.info img{
+  width:100%;
+  max-width:350px;
+  display:block;
+  margin:0 auto 20px;
+  border:6px solid #d4af37;
   border-radius:12px;
-  margin:0 auto 15px;
-  box-shadow:0 4px 12px rgba(200,150,50,0.2);
+  box-shadow:0 6px 16px rgba(200,150,50,0.3);
 }
 
-/* --- BOTONES Y LINKS --- */
+/* --- BOTÓN --- */
 a{
-  font-family:'Cormorant Garamond',serif;
   color:#7b6400;
   text-decoration:none;
   border-bottom:1px solid #d4af37;
-  font-size:clamp(0.9rem,3.2vw,1.05rem);
   transition:.3s;
 }
 a:hover{color:#a07f00;border-color:#a07f00;}
 .button{
   display:inline-block;
-  margin-top:25px;
+  margin-top:20px;
   padding:12px 35px;
   background:linear-gradient(135deg,#d4af37,#f7e98e,#c19a2b);
   color:white;
@@ -199,7 +161,7 @@ a:hover{color:#a07f00;border-color:#a07f00;}
 footer{
   text-align:center;
   padding:50px 20px;
-  font-size:clamp(0.9rem,3.5vw,1.05rem);
+  font-size:1rem;
   font-weight:500;
   background:#fff8e1;
   color:#5c4b00;
@@ -207,80 +169,46 @@ footer{
   line-height:1.6;
 }
 
-/* Animaciones */
+/* Animaciones básicas */
 @keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
-@keyframes fadeDown{from{opacity:0;transform:translateY(-30px)}to{opacity:1;transform:translateY(0)}}
-
-/* --- MOBILE OPTIMIZACIÓN --- */
-@media (max-width:1024px){
-  html,body{height:auto;overflow-x:hidden;scroll-behavior:smooth;}
-  .info{padding:50px 15px;}
-  .info section{padding:25px 15px;}
-}
-
-/* --- MÓVIL: fondo bda2 fijo, sin fotos del hero --- */
-@media (max-width:600px){
-  .decor{display:none!important;}
-  .hero{
-    background-attachment:scroll!important;
-    background-position:center center!important;
-    background-size:cover!important;
-    background-repeat:no-repeat!important;
-    min-height:calc(var(--vh,1vh)*100);
-    overflow:hidden;
-  }
-  .bg-collage{
-    background-attachment:fixed!important;
-    background-size:contain!important;
-    background-repeat:repeat!important;
-    background-position:center center!important;
-  }
-  .mini-thumb{display:block;}
-}
-
-/* ✅ Fix espacio blanco móvil */
-:root { --vh: 1vh; }
-@media (max-width:1024px){
-  .hero{
-    height:calc(var(--vh,1vh)*100);
-    overflow:hidden;
-  }
-}
 </style>
 </head>
 <body>
 
+<!-- Fondo general -->
 <div class="bg-collage"></div>
 
+<!-- Encabezado principal -->
 <div class="hero">
-  <img src="bda1.png" class="decor top-left" style="--r:-8deg;--r2:-3deg;">
-  <img src="bda3.png" class="decor bottom-right" style="--r:10deg;--r2:7deg;">
   <h1>Bodas de Oro</h1>
   <div class="line"></div>
-  <p>Josefina Rosalia Maldonado Larios y<br>Fernando Gutiérrez Arenas<br><br>
-  Invitan junto a sus hijos<br><strong>Israel y Maribel Gutiérrez Maldonado</strong><br>
+  <p>Josefina Rosalia Maldonado Larios y<br>
+  Fernando Gutiérrez Arenas<br><br>
+  Invitan junto a sus hijos<br>
+  <strong>Israel y Maribel Gutiérrez Maldonado</strong><br>
   a celebrar 50 años de amor y unión.</p>
 </div>
 
+<!-- Secciones -->
 <div class="info">
   <section>
-    <img src="bda1.png" alt="Ceremonia" class="mini-thumb">
+    <img src="bda1.png" alt="Ceremonia Religiosa">
     <h2>Ceremonia Religiosa</h2>
     <p>Les esperamos el <strong>22 de noviembre a las 4:00 PM</strong> en la<br>
     <strong>Capilla de Nuestra Señora de la Asunción</strong><br>
     Av. Lázaro Cárdenas 34, Central Michoacana, Ecatepec de Morelos, Méx.</p>
-    <a href="https://maps.app.goo.gl/dyF3LukshnRh1JM18" target="_blank" rel="noopener noreferrer">Ver ubicación 📍</a>
+    <a href="https://maps.app.goo.gl/dyF3LukshnRh1JM18" target="_blank">Ver ubicación 📍</a>
   </section>
 
   <section>
-    <img src="bda3.png" alt="Comida de Celebración" class="mini-thumb">
+    <img src="bda3.png" alt="Comida de Celebración">
     <h2>Comida de Celebración</h2>
     <p>Después de la misa, acompáñanos a compartir una comida familiar<br>
     en <strong>Avenida Halcón 4, Colonia Central Michoacana, Ecatepec de Morelos</strong>.</p>
   </section>
 
   <section>
-    <img src="bda4.jpeg" alt="Foto de la familia" class="mini-thumb">
+    <img src="bda4.jpeg" alt="Confirma tu asistencia">
     <h2>Confirma tu Asistencia</h2>
     <p>Tu presencia es el mejor regalo que podemos recibir.</p>
     <a class="button" href="https://wa.me/5215516569477?text=Confirmo%20mi%20asistencia%20a%20las%20Bodas%20de%20Oro%20de%20Josefina%20y%20Fernando%20💛" target="_blank">Confirmar por WhatsApp</a>
@@ -293,7 +221,7 @@ footer{
 </footer>
 
 <script>
-/* Rosas cayendo */
+/* Rosas doradas cayendo */
 for(let i=0;i<25;i++){
   const rose=document.createElement('img');
   rose.src='rosa.png';
@@ -304,13 +232,6 @@ for(let i=0;i<25;i++){
   rose.style.opacity=0.3+Math.random()*0.2;
   document.body.appendChild(rose);
 }
-
-/* Fix de altura real en móviles */
-function fixVH(){
-  document.documentElement.style.setProperty('--vh', (window.innerHeight * 0.01) + 'px');
-}
-fixVH();
-window.addEventListener('resize', fixVH);
 </script>
 
 </body>
