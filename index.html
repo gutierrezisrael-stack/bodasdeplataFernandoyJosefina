@@ -140,7 +140,7 @@ body{
   letter-spacing:0.3px;
 }
 
-/* --- MINIATURAS PARA MÓVIL --- */
+/* --- MINIATURAS MÓVIL --- */
 .mini-thumb{
   display:none;
   width:90%;
@@ -151,7 +151,7 @@ body{
   box-shadow:0 4px 12px rgba(200,150,50,0.2);
 }
 
-/* --- LINKS Y BOTONES --- */
+/* --- BOTONES Y LINKS --- */
 a{
   font-family:'Cormorant Garamond',serif;
   color:#7b6400;
@@ -214,24 +214,27 @@ footer{
 /* --- MOBILE OPTIMIZACIÓN --- */
 @media (max-width:1024px){
   html,body{height:auto;overflow-x:hidden;scroll-behavior:smooth;}
-  .hero{background-attachment:scroll!important;}
   .info{padding:50px 15px;}
   .info section{padding:25px 15px;}
 }
 
-/* --- MÓVIL: MINIATURAS Y SIN FOTOS LATERALES --- */
+/* --- MÓVIL: fondo bda2 fijo, sin fotos del hero --- */
 @media (max-width:600px){
+  .decor{display:none!important;}
   .hero{
-    background-size:cover;
-    background-position:center center;
-    background-attachment:scroll;
+    background-attachment:scroll!important;
+    background-position:center center!important;
+    background-size:cover!important;
+    background-repeat:no-repeat!important;
     min-height:calc(var(--vh,1vh)*100);
-    display:flex;
-    justify-content:center;
-    align-items:center;
     overflow:hidden;
   }
-  .decor{display:none;}
+  .bg-collage{
+    background-attachment:fixed!important;
+    background-size:contain!important;
+    background-repeat:repeat!important;
+    background-position:center center!important;
+  }
   .mini-thumb{display:block;}
 }
 
@@ -240,7 +243,6 @@ footer{
 @media (max-width:1024px){
   .hero{
     height:calc(var(--vh,1vh)*100);
-    background-attachment:scroll!important;
     overflow:hidden;
   }
 }
@@ -303,7 +305,7 @@ for(let i=0;i<25;i++){
   document.body.appendChild(rose);
 }
 
-/* Fix de altura real en móviles (sin espacios blancos) */
+/* Fix de altura real en móviles */
 function fixVH(){
   document.documentElement.style.setProperty('--vh', (window.innerHeight * 0.01) + 'px');
 }
