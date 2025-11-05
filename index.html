@@ -74,7 +74,7 @@ body{
   z-index:2;
 }
 
-/* --- FOTOS EN LAS ESQUINAS (SIN CAMBIAR EFECTOS) --- */
+/* --- FOTOS EN LAS ESQUINAS --- */
 .decor{
   position:absolute;
   width:clamp(120px,28vw,280px);
@@ -215,22 +215,36 @@ footer{
 @keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
 @keyframes fadeDown{from{opacity:0;transform:translateY(-30px)}to{opacity:1;transform:translateY(0)}}
 
-/* --- RESPONSIVE SIN CAMBIAR EFECTOS --- */
-@media (max-width:768px){
-  .hero{height:auto;min-height:100vh;background-attachment:scroll;}
-  .decor{opacity:0.4;}
-  .decor.top-left{width:180px;top:-15px;left:-15px;}
-  .decor.bottom-right{width:180px;bottom:-15px;right:-15px;}
-  .info{padding:60px 15px;}
-  .info section{margin:25px 0;padding:25px 15px;}
-  .gold-frame{max-width:95%;border-width:4px;}
+/* --- AJUSTE RESPONSIVE ESTABLE --- */
+@media (max-width:1024px){
+  html,body{height:auto;overflow-x:hidden;scroll-behavior:smooth;}
+  .hero{
+    min-height:100vh;
+    height:auto;
+    background-attachment:scroll!important;
+    background-position:center;
+    background-size:cover;
+    padding:60px 15px;
+  }
+  .decor{
+    max-width:40vw;
+    opacity:0.45;
+    transition:none!important;
+  }
+  .decor.top-left{top:-10px;left:-10px;transform:rotate(-6deg);width:35vw;}
+  .decor.bottom-right{bottom:-10px;right:-10px;transform:rotate(6deg);width:35vw;}
+  .hero h1{font-size:2.6rem;line-height:1.2;text-align:center;padding:0 10px;}
+  .hero p{font-size:1rem;max-width:90%;margin:0 auto;}
+  .info{padding:50px 15px;}
+  .info section{margin:25px 0;padding:25px 15px;background:rgba(255,250,235,0.95);border-radius:20px;}
+  .gold-frame{max-width:100%;border-width:4px;}
+  footer{padding:30px 15px;font-size:0.9rem;}
 }
-@media (max-width:480px){
+@media (max-width:600px){
   .decor.top-left,.decor.bottom-right{width:150px;opacity:0.35;}
-  .hero h1{font-size:2.6rem;}
+  .hero h1{font-size:2.2rem;}
+  .hero p{font-size:0.95rem;}
   .info h2{font-size:1.4rem;}
-  .info p{font-size:1rem;}
-  .button{padding:10px 25px;}
 }
 </style>
 </head>
