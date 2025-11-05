@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bodas de Plata - Josefina y Fernando</title>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@500;700&family=Cormorant+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:'Cormorant Garamond',serif;
+  color:#222;
+  background:#f8f8f8;
+  overflow-x:hidden;
+  position:relative;
+}
+
+/* --- HERO --- */
+.hero{
+  position:relative;
+  height:100vh;
+  background:linear-gradient(rgba(255,255,255,0.7),rgba(255,255,255,0.9)),
+             url('bda6.jpg') center/cover no-repeat fixed;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  overflow:hidden;
+}
+.hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:radial-gradient(circle at top,rgba(255,255,255,0.2),rgba(255,255,255,0.7));
+  animation:shimmer 10s infinite alternate;
+}
+@keyframes shimmer{from{opacity:.7}to{opacity:1}}
+
+/* --- EFECTO PLATEADO BRILLANTE EN EL TÍTULO --- */
+.hero h1{
+  font-family:'Great Vibes',cursive;
+  font-size:4.3rem;
+  background:linear-gradient(120deg,#9b9b9b 0%,#e5e5e5 20%,#bfbfbf 40%,#f9f9f9 60%,#bcbcbc 80%,#e3e3e3 100%);
+  background-size:300% 300%;
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  animation:shine 8s linear infinite, fadeDown 2s ease;
+  text-shadow:0 3px 6px rgba(0,0,0,0.12);
+  font-weight:700;
+  letter-spacing:1px;
+  z-index:2;
+}
+@keyframes shine{
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
+}
+
+.hero p{
+  font-family:'Playfair Display',serif;
+  font-size:1.3rem;
+  color:#222;
+  font-weight:500;
+  margin-top:15px;
+  letter-spacing:0.4px;
+  z-index:2;
+  animation:fadeUp 2s ease;
+}
+.line{
+  width:120px;height:2px;
+  background:linear-gradient(to right,#999,#e2e2e2,#999);
+  margin:20px auto;
+  z-index:2;
+}
+
+/* --- FOTOS EN LAS ESQUINAS --- */
+.decor{
+  position:absolute;
+  width:280px;
+  opacity:0.45;
+  z-index:1;
+  filter:drop-shadow(0 4px 6px rgba(0,0,0,0.15));
+  animation:float 6s ease-in-out infinite alternate;
+}
+.decor.top-left{top:-30px;left:-30px;transform:rotate(-8deg);}
+.decor.bottom-right{bottom:-30px;right:-30px;transform:rotate(10deg);}
+.decor.middle-right{top:-30px;right:-30px;width:280px;transform:rotate(5deg);}
+.decor.bottom-left{bottom:-30px;left:-30px;width:280px;transform:rotate(-5deg);}
+
+@keyframes float{
+  0%{transform:translateY(0) rotate(var(--r,0deg));}
+  100%{transform:translateY(10px) rotate(var(--r2,5deg));}
+}
+
+/* --- FONDO COLLAGE DETRÁS DE TODO --- */
+.bg-collage{
+  position:fixed;
+  top:0; left:0;
+  width:100%; height:100%;
+  background-image:url('bda2.jpeg');
+  background-size:400px;
+  background-repeat:repeat;
+  background-attachment:fixed;
+  filter:grayscale(100%) brightness(1.1) blur(2px);
+  opacity:0.25;
+  z-index:0;
+}
+
+/* --- CONTENIDO PRINCIPAL --- */
+.info{
+  position:relative;
+  z-index:2;
+  text-align:center;
+  padding:100px 20px;
+  max-width:900px;
+  margin:auto;
+}
+.info section{
+  background:rgba(255,255,255,0.9);
+  border-radius:20px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.08);
+  margin:40px 0;
+  padding:40px 25px;
+  backdrop-filter:blur(6px);
+  animation:fadeUp 1.5s ease;
+}
+.info h2{
+  font-family:'Playfair Display',serif;
+  font-size:2rem;
+  color:#111;
+  font-weight:700;
+  text-shadow:0 2px 3px rgba(0,0,0,0.1);
+  letter-spacing:0.6px;
+  margin-bottom:15px;
+}
+.info p{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.15rem;
+  line-height:1.9;
+  color:#222;
+  font-weight:500;
+  letter-spacing:0.3px;
+}
+a{
+  font-family:'Cormorant Garamond',serif;
+  color:#222;
+  text-decoration:none;
+  border-bottom:1px solid #999;
+  font-size:1.05rem;
+  transition:.3s;
+}
+a:hover{color:#000;border-color:#000;}
+.button{
+  display:inline-block;
+  margin-top:25px;
+  padding:12px 35px;
+  background:linear-gradient(135deg,#8d8d8d,#c5c5c5);
+  color:white;
+  border-radius:30px;
+  text-decoration:none;
+  font-weight:600;
+  letter-spacing:0.5px;
+  transition:all .3s ease;
+  box-shadow:0 6px 12px rgba(0,0,0,0.15);
+}
+.button:hover{
+  transform:scale(1.05);
+  background:linear-gradient(135deg,#7a7a7a,#d0d0d0);
+}
+
+/* --- ROSAS PLATEADAS CAYENDO --- */
+.rose{
+  position:fixed;
+  top:-10%;
+  width:55px;
+  opacity:0.35;
+  animation:fall linear infinite;
+  filter:drop-shadow(0 0 6px rgba(200,200,200,0.8));
+  z-index:1;
+  pointer-events:none;
+}
+@keyframes fall{
+  0%{transform:translateY(0) rotate(0);}
+  100%{transform:translateY(110vh) rotate(360deg);}
+}
+
+/* FOOTER */
+footer{
+  font-family:'Cormorant Garamond',serif;
+  text-align:center;
+  padding:50px 20px;
+  font-size:1.05rem;
+  font-weight:500;
+  background:#f0f0f0;
+  color:#333;
+  letter-spacing:0.3px;
+}
+
+/* Animaciones */
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeDown{from{opacity:0;transform:translateY(-30px)}to{opacity:1;transform:translateY(0)}}
+</style>
+</head>
+<body>
+
+<!-- Fondo collage -->
+<div class="bg-collage"></div>
+
+<!-- Portada -->
+<div class="hero">
+  <img src="bda1.png" class="decor top-left" style="--r:-8deg;--r2:-3deg;">
+  <img src="bda4.jpeg" class="decor middle-right" style="--r:5deg;--r2:-2deg;">
+  <img src="bda3.png" class="decor bottom-right" style="--r:10deg;--r2:7deg;">
+  <img src="bda5.jpeg" class="decor bottom-left" style="--r:-5deg;--r2:-3deg;">
+  <h1>Bodas de Plata</h1>
+  <div class="line"></div>
+  <p>Josefina Rosalia Maldonado Larios y<br>Fernando Gutiérrez Arenas<br><br>
+  Invitan junto a sus hijos<br><strong>Israel y Maribel Gutiérrez Maldonado</strong><br>
+  a celebrar 25 años de amor y unión.</p>
+</div>
+
+<!-- Información -->
+<div class="info">
+  <section>
+    <h2>Ceremonia Religiosa</h2>
+    <p>Les esperamos el <strong>22 de noviembre a las 4:00 PM</strong> en la<br>
+    <strong>Capilla de Nuestra Señora de la Asunción</strong><br>
+    Av. Lázaro Cárdenas 34, Central Michoacana, Ecatepec de Morelos, Méx.</p>
+    <a href="https://www.google.com/maps/place/Capilla+de+Nuestra+Se%C3%B1ora+de+La+Asuncion,+Av.+L%C3%A1zaro+C%C3%A1rdenas+34,+Central+Michoacana,+55170+Ecatepec+de+Morelos,+M%C3%A9x./data=!4m2!3m1!1s0x85d1fb72516bddc1:0x8614cd76f0778df5" target="_blank">Ver ubicación 📍</a>
+  </section>
+
+  <section>
+    <h2>Comida de Celebración</h2>
+    <p>Después de la misa, acompáñanos a compartir una comida familiar<br>
+    en <strong>Avenida Halcón 4, Colonia Central Michoacana, Ecatepec de Morelos</strong>.</p>
+  </section>
+
+  <section>
+    <h2>Confirma tu Asistencia</h2>
+    <p>Tu presencia es el mejor regalo que podemos recibir.</p>
+    <a class="button" href="https://wa.me/?text=Confirmo%20mi%20asistencia%20a%20las%20Bodas%20de%20Plata%20de%20Josefina%20y%20Fernando%20💍" target="_blank">Confirmar por WhatsApp</a>
+  </section>
+</div>
+
+<footer>
+  Con cariño, la familia Gutiérrez Maldonado 💕<br>22 de noviembre de 2025
+</footer>
+
+<script>
+/* Rosas plateadas cayendo */
+for(let i=0;i<25;i++){
+  const rose=document.createElement('img');
+  rose.src='rosa.png';
+  rose.classList.add('rose');
+  rose.style.left=Math.random()*100+'vw';
+  rose.style.animationDuration=6+Math.random()*8+'s';
+  rose.style.width=(40+Math.random()*40)+'px';
+  rose.style.opacity=0.3+Math.random()*0.2;
+  document.body.appendChild(rose);
+}
+</script>
+
+</body>
+</html>
