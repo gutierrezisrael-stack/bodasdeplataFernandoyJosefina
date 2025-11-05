@@ -18,7 +18,7 @@ body{
 /* --- HERO --- */
 .hero{
   position:relative;
-  height:100vh;
+  min-height:100vh;
   background:linear-gradient(rgba(255,248,230,0.8),rgba(255,250,240,0.9)),
              url('bda6.jpg') center/cover no-repeat fixed;
   display:flex;
@@ -32,12 +32,12 @@ body{
   content:"";
   position:absolute;
   inset:0;
-  background:radial-gradient(circle at top,rgba(255,255,230,0.2),rgba(255,248,200,0.6));
+  background:radial-gradient(circle at top,rgba(255,255,230,0.25),rgba(255,248,200,0.65));
   animation:shimmer 10s infinite alternate;
 }
 @keyframes shimmer{from{opacity:.8}to{opacity:1}}
 
-/* --- EFECTO DORADO BRILLANTE --- */
+/* --- EFECTO DORADO --- */
 .hero h1{
   font-family:'Great Vibes',cursive;
   font-size:clamp(2.5rem,7vw,4.5rem);
@@ -82,7 +82,6 @@ body{
   z-index:1;
   filter:drop-shadow(0 4px 6px rgba(0,0,0,0.15));
   animation:float 6s ease-in-out infinite alternate;
-  object-fit:contain;
 }
 .decor.top-left{top:-30px;left:-30px;transform:rotate(-8deg);}
 .decor.bottom-right{bottom:-30px;right:-30px;transform:rotate(10deg);}
@@ -91,7 +90,7 @@ body{
   100%{transform:translateY(10px) rotate(var(--r2,5deg));}
 }
 
-/* --- FONDO COLLAGE DETRÁS DE TODO --- */
+/* --- FONDO COLLAGE --- */
 .bg-collage{
   position:fixed;
   top:0; left:0;
@@ -105,7 +104,7 @@ body{
   z-index:0;
 }
 
-/* --- CONTENIDO PRINCIPAL --- */
+/* --- CONTENIDO --- */
 .info{
   position:relative;
   z-index:2;
@@ -120,7 +119,7 @@ body{
   box-shadow:0 10px 25px rgba(200,150,50,0.1);
   margin:clamp(20px,6vw,40px) 0;
   padding:clamp(25px,6vw,40px) 25px;
-  backdrop-filter:blur(6px);
+  backdrop-filter:blur(5px);
   animation:fadeUp 1.5s ease;
 }
 .info h2{
@@ -131,7 +130,6 @@ body{
   -webkit-text-fill-color:transparent;
   font-weight:700;
   letter-spacing:0.6px;
-  text-shadow:0 2px 3px rgba(120,90,10,0.15);
   margin-bottom:15px;
 }
 .info p{
@@ -142,7 +140,7 @@ body{
   letter-spacing:0.3px;
 }
 
-/* --- MARCO DORADO DE FOTO --- */
+/* --- FOTO CON MARCO DORADO --- */
 .gold-frame{
   display:block;
   margin:30px auto 10px;
@@ -199,7 +197,6 @@ a:hover{color:#a07f00;border-color:#a07f00;}
 
 /* FOOTER */
 footer{
-  font-family:'Cormorant Garamond',serif;
   text-align:center;
   padding:50px 20px;
   font-size:clamp(0.9rem,3.5vw,1.05rem);
@@ -207,7 +204,6 @@ footer{
   background:#fff8e1;
   color:#5c4b00;
   border-top:2px solid #e6c85a;
-  letter-spacing:0.3px;
   line-height:1.6;
 }
 
@@ -215,45 +211,59 @@ footer{
 @keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
 @keyframes fadeDown{from{opacity:0;transform:translateY(-30px)}to{opacity:1;transform:translateY(0)}}
 
-/* --- AJUSTE RESPONSIVE ESTABLE --- */
+/* --- MOBILE OPTIMIZACIÓN --- */
 @media (max-width:1024px){
   html,body{height:auto;overflow-x:hidden;scroll-behavior:smooth;}
+  .hero{background-attachment:scroll!important;}
+  .info{padding:50px 15px;}
+  .info section{padding:25px 15px;}
+  .gold-frame{max-width:100%;border-width:4px;}
+}
+
+/* 🔧 Ajuste móvil: fotos alineadas verticalmente */
+@media (max-width:600px){
   .hero{
-    min-height:100vh;
-    height:auto;
-    background-attachment:scroll!important;
-    background-position:center;
     background-size:cover;
-    padding:60px 15px;
+    background-position:center center;
+    background-attachment:scroll;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
   }
   .decor{
-    max-width:40vw;
-    opacity:0.45;
-    transition:none!important;
+    width:42vw;
+    max-width:180px;
+    opacity:0.4;
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%) rotate(var(--r,0deg));
+    object-fit:cover;
   }
-  .decor.top-left{top:-10px;left:-10px;transform:rotate(-6deg);width:35vw;}
-  .decor.bottom-right{bottom:-10px;right:-10px;transform:rotate(6deg);width:35vw;}
-  .hero h1{font-size:2.6rem;line-height:1.2;text-align:center;padding:0 10px;}
-  .hero p{font-size:1rem;max-width:90%;margin:0 auto;}
-  .info{padding:50px 15px;}
-  .info section{margin:25px 0;padding:25px 15px;background:rgba(255,250,235,0.95);border-radius:20px;}
-  .gold-frame{max-width:100%;border-width:4px;}
-  footer{padding:30px 15px;font-size:0.9rem;}
-}
-@media (max-width:600px){
-  .decor.top-left,.decor.bottom-right{width:150px;opacity:0.35;}
-  .hero h1{font-size:2.2rem;}
-  .hero p{font-size:0.95rem;}
-  .info h2{font-size:1.4rem;}
+  .decor.top-left{
+    left:-10px;
+    transform:translateY(-50%) rotate(-6deg);
+  }
+  .decor.bottom-right{
+    right:-10px;
+    transform:translateY(-50%) rotate(6deg);
+  }
+  .hero h1{
+    font-size:2.3rem;
+    line-height:1.2;
+  }
+  .hero p{
+    font-size:0.95rem;
+    padding:0 15px;
+  }
 }
 </style>
 </head>
 <body>
 
-<!-- Fondo collage -->
 <div class="bg-collage"></div>
 
-<!-- Portada -->
 <div class="hero">
   <img src="bda1.png" class="decor top-left" style="--r:-8deg;--r2:-3deg;">
   <img src="bda3.png" class="decor bottom-right" style="--r:10deg;--r2:7deg;">
@@ -264,14 +274,13 @@ footer{
   a celebrar 50 años de amor y unión.</p>
 </div>
 
-<!-- Información -->
 <div class="info">
   <section>
     <h2>Ceremonia Religiosa</h2>
     <p>Les esperamos el <strong>22 de noviembre a las 4:00 PM</strong> en la<br>
     <strong>Capilla de Nuestra Señora de la Asunción</strong><br>
     Av. Lázaro Cárdenas 34, Central Michoacana, Ecatepec de Morelos, Méx.</p>
-    <a href="https://www.google.com/maps/place/Capilla+de+Nuestra+Se%C3%B1ora+de+La+Asuncion" target="_blank">Ver ubicación 📍</a>
+    <a href="https://maps.app.goo.gl/dyF3LukshnRh1JM18" target="_blank" rel="noopener noreferrer">Ver ubicación 📍</a>
   </section>
 
   <section>
@@ -294,7 +303,6 @@ footer{
 </footer>
 
 <script>
-/* Rosas doradas cayendo */
 for(let i=0;i<25;i++){
   const rose=document.createElement('img');
   rose.src='rosa.png';
