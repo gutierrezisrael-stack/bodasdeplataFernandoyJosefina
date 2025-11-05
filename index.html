@@ -19,7 +19,7 @@ body{
 .hero{
   position:relative;
   height:100vh;
-  background:linear-gradient(rgba(255,255,255,0.7),rgba(255,255,255,0.9)),
+  background:linear-gradient(rgba(255,255,255,0.75),rgba(255,255,255,0.9)),
              url('bda6.jpg') center/cover no-repeat fixed;
   display:flex;
   flex-direction:column;
@@ -82,12 +82,12 @@ body{
   z-index:1;
   filter:drop-shadow(0 4px 6px rgba(0,0,0,0.15));
   animation:float 6s ease-in-out infinite alternate;
+  object-fit:contain;
 }
 .decor.top-left{top:-30px;left:-30px;transform:rotate(-8deg);}
 .decor.bottom-right{bottom:-30px;right:-30px;transform:rotate(10deg);}
 .decor.middle-right{top:-30px;right:-30px;width:280px;transform:rotate(5deg);}
 .decor.bottom-left{bottom:-30px;left:-30px;width:280px;transform:rotate(-5deg);}
-
 @keyframes float{
   0%{transform:translateY(0) rotate(var(--r,0deg));}
   100%{transform:translateY(10px) rotate(var(--r2,5deg));}
@@ -197,23 +197,32 @@ footer{
   letter-spacing:0.3px;
 }
 
-/* --- OPTIMIZACIÓN RESPONSIVA --- */
+/* --- RESPONSIVE OPTIMIZADO --- */
+@media (max-width: 1024px) {
+  .hero {
+    background-position:center top;
+    background-size:cover;
+  }
+}
 @media (max-width: 768px) {
-  .hero { height:auto; padding:80px 15px; background-attachment:scroll; background-size:cover; background-position:center; }
-  .hero h1 { font-size:2.8rem; letter-spacing:0.5px; }
+  .hero { height:auto; padding:80px 15px; background-attachment:scroll; background-position:center; background-size:contain; }
+  .hero h1 { font-size:2.8rem; }
   .hero p { font-size:1.05rem; line-height:1.6; }
-  .decor { width:150px; opacity:0.35; }
+  .decor { width:140px; opacity:0.35; }
+  .decor.middle-right{width:130px;right:0;top:10px;}
+  .decor.top-left{width:130px;left:0;top:10px;}
+  .decor.bottom-right{width:130px;right:0;bottom:0;}
+  .decor.bottom-left{width:130px;left:0;bottom:0;}
   .info { padding:60px 15px; }
   .info section { padding:25px 15px; margin:25px 0; }
-  .info h2 { font-size:1.5rem; margin-bottom:10px; }
-  .info p { font-size:1rem; line-height:1.6; }
+  .info h2 { font-size:1.5rem; }
+  .info p { font-size:1rem; }
   .button { padding:10px 25px; font-size:0.95rem; }
-  footer { font-size:0.9rem; padding:30px 15px; }
 }
 @media (max-width: 480px) {
   .hero h1 { font-size:2.3rem; }
   .hero p { font-size:1rem; }
-  .decor { width:120px; opacity:0.3; }
+  .decor { width:110px; opacity:0.3; }
   .info h2 { font-size:1.3rem; }
   .button { padding:9px 20px; }
 }
@@ -241,7 +250,7 @@ footer{
     <p>Les esperamos el <strong>22 de noviembre a las 4:00 PM</strong> en la<br>
     <strong>Capilla de Nuestra Señora de la Asunción</strong><br>
     Av. Lázaro Cárdenas 34, Central Michoacana, Ecatepec de Morelos, Méx.</p>
-    <a href="https://www.google.com/maps/place/Capilla+de+Nuestra+Se%C3%B1ora+de+La+Asuncion,+Av.+L%C3%A1zaro+C%C3%A1rdenas+34,+Central+Michoacana,+55170+Ecatepec+de+Morelos,+M%C3%A9x." target="_blank">Ver ubicación 📍</a>
+    <a href="https://www.google.com/maps/place/Capilla+de+Nuestra+Se%C3%B1ora+de+La+Asuncion" target="_blank">Ver ubicación 📍</a>
   </section>
 
   <section>
@@ -276,6 +285,5 @@ for(let i=0;i<25;i++){
   document.body.appendChild(rose);
 }
 </script>
-
 </body>
 </html>
