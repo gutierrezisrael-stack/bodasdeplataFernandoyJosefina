@@ -258,6 +258,18 @@ footer{
     padding:0 15px;
   }
 }
+
+/* ✅ Ajuste anti-espacio blanco móvil */
+:root {
+  --vh: 1vh;
+}
+@media (max-width:1024px){
+  .hero{
+    height:calc(var(--vh,1vh)*100);
+    background-attachment:scroll!important;
+    overflow:hidden;
+  }
+}
 </style>
 </head>
 <body>
@@ -303,6 +315,7 @@ footer{
 </footer>
 
 <script>
+/* Rosas cayendo */
 for(let i=0;i<25;i++){
   const rose=document.createElement('img');
   rose.src='rosa.png';
@@ -313,6 +326,13 @@ for(let i=0;i<25;i++){
   rose.style.opacity=0.3+Math.random()*0.2;
   document.body.appendChild(rose);
 }
+
+/* Fix de altura real en móviles (sin espacios blancos) */
+function fixVH(){
+  document.documentElement.style.setProperty('--vh', (window.innerHeight * 0.01) + 'px');
+}
+fixVH();
+window.addEventListener('resize', fixVH);
 </script>
 
 </body>
