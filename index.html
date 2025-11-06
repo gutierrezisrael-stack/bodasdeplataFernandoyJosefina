@@ -55,7 +55,7 @@ body{
   content:"";
   position:absolute;
   inset:0;
-  background:rgba(255,255,255,0.35); /* controla opacidad de la imagen */
+  background:rgba(255,255,255,0.35);
   backdrop-filter:brightness(0.95);
   z-index:1;
 }
@@ -98,10 +98,10 @@ body{
   animation:fadeUp 2s ease 0.5s forwards;
 }
 
-/* --- BOTÓN DORADO CON FLECHA --- */
+/* --- BOTÓN DORADO CON FLECHA HACIA ABAJO --- */
 .scroll-indicator {
-  position: absolute;
-  bottom: 70px;
+  position: relative;
+  margin-top: 40px;
   text-align: center;
   z-index: 3;
   animation: fadeUp 2s ease 1s forwards;
@@ -116,16 +116,16 @@ body{
   border: none;
   border-radius: 35px;
   font-family: 'Playfair Display', serif;
-  font-size: 1.1rem;
-  padding: 14px 28px;
+  font-size: 1.05rem;
+  padding: 12px 26px;
   cursor: pointer;
   box-shadow: 0 6px 12px rgba(200, 160, 50, 0.35);
   transition: all 0.3s ease;
-  letter-spacing: 0.5px;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  letter-spacing: 0.3px;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
 }
 .cta-button:hover {
-  transform: scale(1.06);
+  transform: scale(1.05);
   background: linear-gradient(135deg, #f1cc52, #d4af37);
   box-shadow: 0 8px 15px rgba(210, 170, 50, 0.4);
 }
@@ -135,8 +135,18 @@ body{
   animation: arrowPulse 1.2s infinite;
 }
 @keyframes arrowPulse {
-  0%, 100% { transform: translateX(0); opacity: 1; }
-  50% { transform: translateX(6px); opacity: 0.8; }
+  0%, 100% { transform: translateY(0); opacity: 1; }
+  50% { transform: translateY(6px); opacity: 0.8; }
+}
+@media (max-width: 600px) {
+  .cta-button {
+    font-size: 0.9rem;
+    padding: 10px 20px;
+    border-radius: 30px;
+  }
+  .arrow {
+    font-size: 1.1rem;
+  }
 }
 
 /* --- SECCIONES --- */
@@ -198,7 +208,7 @@ body{
   opacity:1;
 }
 
-/* --- BOTÓN --- */
+/* --- BOTÓN SECUNDARIO --- */
 a{
   color:#7b6400;
   text-decoration:none;
@@ -255,13 +265,6 @@ footer{
 /* --- ANIMACIONES BASE --- */
 @keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
 @keyframes fadeDown{from{opacity:0;transform:translateY(-30px)}to{opacity:1;transform:translateY(0)}}
-
-/* --- RESPONSIVE --- */
-@media(max-width:600px){
-  .hero h1{font-size:3rem;}
-  .info img{max-width:300px;}
-  .info section{padding:30px 15px;}
-}
 </style>
 </head>
 <body>
@@ -280,7 +283,7 @@ footer{
   <div class="scroll-indicator" id="verDetalles">
     <button class="cta-button">
       <span>Haz clic para ver los detalles de la invitación 💛</span>
-      <span class="arrow">➜</span>
+      <span class="arrow">⬇️</span>
     </button>
   </div>
 </div>
