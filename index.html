@@ -6,7 +6,7 @@
 <title>Bodas de Oro - Josefina y Fernando</title>
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@500;700&family=Cormorant+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
+*{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth}
 body{
   font-family:'Cormorant Garamond',serif;
   color:#4a3b00;
@@ -15,39 +15,62 @@ body{
   position:relative;
 }
 
-/* --- FONDO GENERAL --- */
+/* --- FONDO GENERAL TAPIZADO CON BRILLO DORADO --- */
 .bg-collage{
   position:fixed;
-  top:0; left:0;
-  width:100%; height:100%;
-  background:url('bda2.jpeg') center/400px repeat fixed;
-  filter:grayscale(15%) brightness(1.05) sepia(40%) hue-rotate(15deg);
-  opacity:0.25;
+  top:0;left:0;
+  width:100%;height:100%;
+  background:url('bda2.jpeg') center/100px repeat fixed;
+  filter:grayscale(5%) brightness(1.15) sepia(55%) saturate(1.3) hue-rotate(25deg);
+  opacity:0.35;
   z-index:0;
+}
+.bg-collage::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(120deg,rgba(255,230,150,0.15),rgba(255,240,200,0.2),rgba(240,200,120,0.15));
+  animation:goldenGlow 12s ease-in-out infinite alternate;
+}
+@keyframes goldenGlow{
+  from{opacity:0.15;}
+  to{opacity:0.35;}
 }
 
 /* --- HERO --- */
 .hero{
   position:relative;
   min-height:100vh;
-  background:linear-gradient(rgba(255,250,230,0.8),rgba(255,250,230,0.9)),
+  background:linear-gradient(rgba(255,250,230,0.85),rgba(255,250,230,0.95)),
              url('bda6.jpg') center/cover no-repeat;
   display:flex;
   flex-direction:column;
   justify-content:center;
   align-items:center;
   text-align:center;
-  z-index:2;
   overflow:hidden;
+  z-index:2;
+}
+.hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:rgba(255,255,255,0.35); /* controla opacidad de la imagen */
+  backdrop-filter:brightness(0.95);
+  z-index:1;
+}
+.hero h1, .hero p, .line, .scroll-indicator{
+  position:relative;
+  z-index:2;
 }
 .hero h1{
   font-family:'Great Vibes',cursive;
-  font-size:3.8rem;
+  font-size:4rem;
   background:linear-gradient(120deg,#c19a2b 0%,#f6e27a 25%,#d4af37 50%,#f7e98e 75%,#b88a00 100%);
   background-size:300% 300%;
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
-  animation:shine 8s linear infinite;
+  animation:shine 8s linear infinite, fadeDown 2s ease forwards;
   text-shadow:0 3px 6px rgba(180,150,50,0.25);
   font-weight:700;
   letter-spacing:1px;
@@ -59,19 +82,64 @@ body{
 }
 .hero p{
   font-family:'Playfair Display',serif;
-  font-size:1.2rem;
+  font-size:1.25rem;
   color:#5b4a00;
   font-weight:500;
   margin-top:15px;
   line-height:1.6;
+  opacity:0;
+  animation:fadeUp 2s ease 0.8s forwards;
 }
 .line{
   width:120px;height:2px;
   background:linear-gradient(to right,#d4af37,#f6e27a,#d4af37);
   margin:20px auto;
+  opacity:0;
+  animation:fadeUp 2s ease 0.5s forwards;
 }
 
-/* --- CONTENIDO --- */
+/* --- BOTÓN DORADO CON FLECHA --- */
+.scroll-indicator {
+  position: absolute;
+  bottom: 70px;
+  text-align: center;
+  z-index: 3;
+  animation: fadeUp 2s ease 1s forwards;
+}
+.cta-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #d4af37, #f6e27a, #c19a2b);
+  color: white;
+  border: none;
+  border-radius: 35px;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  padding: 14px 28px;
+  cursor: pointer;
+  box-shadow: 0 6px 12px rgba(200, 160, 50, 0.35);
+  transition: all 0.3s ease;
+  letter-spacing: 0.5px;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+.cta-button:hover {
+  transform: scale(1.06);
+  background: linear-gradient(135deg, #f1cc52, #d4af37);
+  box-shadow: 0 8px 15px rgba(210, 170, 50, 0.4);
+}
+.arrow {
+  font-size: 1.3rem;
+  color: #fff;
+  animation: arrowPulse 1.2s infinite;
+}
+@keyframes arrowPulse {
+  0%, 100% { transform: translateX(0); opacity: 1; }
+  50% { transform: translateX(6px); opacity: 0.8; }
+}
+
+/* --- SECCIONES --- */
 .info{
   position:relative;
   z-index:2;
@@ -87,6 +155,13 @@ body{
   margin:40px 0;
   padding:40px 25px;
   backdrop-filter:blur(6px);
+  opacity:0;
+  transform:translateY(50px);
+  transition:all 1s ease;
+}
+.info section.visible{
+  opacity:1;
+  transform:translateY(0);
 }
 .info h2{
   font-family:'Playfair Display',serif;
@@ -96,6 +171,7 @@ body{
   -webkit-text-fill-color:transparent;
   font-weight:700;
   margin-bottom:15px;
+  animation:fadeDown 1.5s ease;
 }
 .info p{
   font-size:1.05rem;
@@ -104,7 +180,7 @@ body{
   font-weight:500;
 }
 
-/* --- FOTOS CON MARCO DORADO --- */
+/* --- FOTOS CON MARCOS DORADOS --- */
 .info img{
   width:100%;
   max-width:350px;
@@ -113,6 +189,13 @@ body{
   border:6px solid #d4af37;
   border-radius:12px;
   box-shadow:0 6px 16px rgba(200,150,50,0.3);
+  transform:scale(0.95);
+  opacity:0;
+  transition:all 1s ease;
+}
+.info img.visible{
+  transform:scale(1);
+  opacity:1;
 }
 
 /* --- BOTÓN --- */
@@ -145,11 +228,11 @@ a:hover{color:#a07f00;border-color:#a07f00;}
 .rose{
   position:fixed;
   top:-10%;
-  width:55px;
-  opacity:0.35;
+  width:28px;
+  opacity:0.4;
   animation:fall linear infinite;
-  filter:drop-shadow(0 0 6px rgba(210,160,60,0.8));
-  z-index:1;
+  filter:drop-shadow(0 0 5px rgba(210,160,60,0.9));
+  z-index:5;
   pointer-events:none;
 }
 @keyframes fall{
@@ -157,7 +240,7 @@ a:hover{color:#a07f00;border-color:#a07f00;}
   100%{transform:translateY(110vh) rotate(360deg);}
 }
 
-/* FOOTER */
+/* --- FOOTER --- */
 footer{
   text-align:center;
   padding:50px 20px;
@@ -169,16 +252,22 @@ footer{
   line-height:1.6;
 }
 
-/* Animaciones básicas */
+/* --- ANIMACIONES BASE --- */
 @keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeDown{from{opacity:0;transform:translateY(-30px)}to{opacity:1;transform:translateY(0)}}
+
+/* --- RESPONSIVE --- */
+@media(max-width:600px){
+  .hero h1{font-size:3rem;}
+  .info img{max-width:300px;}
+  .info section{padding:30px 15px;}
+}
 </style>
 </head>
 <body>
 
-<!-- Fondo general -->
 <div class="bg-collage"></div>
 
-<!-- Encabezado principal -->
 <div class="hero">
   <h1>Bodas de Oro</h1>
   <div class="line"></div>
@@ -187,10 +276,16 @@ footer{
   Invitan junto a sus hijos<br>
   <strong>Israel y Maribel Gutiérrez Maldonado</strong><br>
   a celebrar 50 años de amor y unión.</p>
+
+  <div class="scroll-indicator" id="verDetalles">
+    <button class="cta-button">
+      <span>Haz clic para ver los detalles de la invitación 💛</span>
+      <span class="arrow">➜</span>
+    </button>
+  </div>
 </div>
 
-<!-- Secciones -->
-<div class="info">
+<div class="info" id="detalles">
   <section>
     <img src="bda1.png" alt="Ceremonia Religiosa">
     <h2>Ceremonia Religiosa</h2>
@@ -208,7 +303,7 @@ footer{
   </section>
 
   <section>
-    <img src="bda4.jpeg" alt="Confirma tu asistencia">
+    <img src="bda4.png" alt="Confirma tu asistencia">
     <h2>Confirma tu Asistencia</h2>
     <p>Tu presencia es el mejor regalo que podemos recibir.</p>
     <a class="button" href="https://wa.me/5215516569477?text=Confirmo%20mi%20asistencia%20a%20las%20Bodas%20de%20Oro%20de%20Josefina%20y%20Fernando%20💛" target="_blank">Confirmar por WhatsApp</a>
@@ -220,17 +315,53 @@ footer{
   Con cariño, la familia Gutiérrez Maldonado 💕<br>22 de noviembre de 2025
 </footer>
 
+<!-- 🎵 MÚSICA -->
+<audio id="bg-music" src="Toda Una Vida.mp3" preload="auto" loop></audio>
+
 <script>
-/* Rosas doradas cayendo */
-for(let i=0;i<25;i++){
+/* Rosas cayendo */
+for(let i=0;i<30;i++){
   const rose=document.createElement('img');
   rose.src='rosa.png';
   rose.classList.add('rose');
   rose.style.left=Math.random()*100+'vw';
   rose.style.animationDuration=6+Math.random()*8+'s';
-  rose.style.width=(40+Math.random()*40)+'px';
-  rose.style.opacity=0.3+Math.random()*0.2;
+  rose.style.width=(20+Math.random()*20)+'px';
+  rose.style.opacity=0.25+Math.random()*0.3;
   document.body.appendChild(rose);
+}
+
+/* Animaciones en scroll */
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add('visible');
+    }
+  });
+},{threshold:0.2});
+document.querySelectorAll('.info section, .info img').forEach(el=>observer.observe(el));
+
+/* 🎶 Click para reproducir música y bajar */
+const verDetalles=document.getElementById('verDetalles');
+const music=document.getElementById('bg-music');
+verDetalles.addEventListener('click',()=>{
+  tryPlayMusic();
+  document.getElementById('detalles').scrollIntoView({behavior:'smooth'});
+});
+
+let musicStarted=false;
+function tryPlayMusic(){
+  if(musicStarted) return;
+  musicStarted=true;
+  music.volume=0;
+  music.play().then(()=>fadeInMusic()).catch(()=>console.log("Autoplay bloqueado"));
+}
+function fadeInMusic(){
+  let vol=0;
+  const fade=setInterval(()=>{
+    if(vol<0.9){vol+=0.05;music.volume=vol;}
+    else clearInterval(fade);
+  },200);
 }
 </script>
 
