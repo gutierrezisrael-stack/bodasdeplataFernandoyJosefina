@@ -309,8 +309,17 @@ footer{
     <img src="bda4.png" alt="Confirma tu asistencia">
     <h2>Confirma tu Asistencia</h2>
     <p>Tu presencia es el mejor regalo que podemos recibir.</p>
-    <a class="button" href="https://wa.me/5215516569477?text=Confirmo%20mi%20asistencia%20a%20las%20Bodas%20de%20Oro%20de%20Josefina%20y%20Fernando%20💛" target="_blank">Confirmar por WhatsApp</a>
-    <p style="margin-top:10px;font-size:0.95rem;color:#8b7500;">(Contacto: Israel Gutiérrez Maldonado)</p>
+
+    <!-- Botón principal -->
+    <button class="button" id="confirmarBtn">Confirmar por WhatsApp 💬</button>
+
+    <!-- Menú emergente -->
+    <div id="menuConfirmar" style="display:none;margin-top:15px;">
+      <a class="button" href="https://wa.me/5215516569477?text=Confirmo%20mi%20asistencia%20a%20las%20Bodas%20de%20Oro%20de%20Josefina%20y%20Fernando%20💛" target="_blank">Confirmar con Israel 💛</a><br><br>
+      <a class="button" href="https://wa.me/5215549293167?text=Confirmo%20mi%20asistencia%20a%20las%20Bodas%20de%20Oro%20de%20Josefina%20y%20Fernando%20💛" target="_blank">Confirmar con Maribel 💛</a>
+    </div>
+
+    <p style="margin-top:10px;font-size:0.95rem;color:#8b7500;">(Contactos: Israel y Maribel Gutiérrez Maldonado)</p>
   </section>
 </div>
 
@@ -366,6 +375,12 @@ function fadeInMusic(){
     else clearInterval(fade);
   },200);
 }
+
+/* --- Menú de confirmación --- */
+document.getElementById('confirmarBtn').addEventListener('click',()=>{
+  const menu = document.getElementById('menuConfirmar');
+  menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
+});
 </script>
 
 </body>
