@@ -21,8 +21,8 @@ body{
   top:0;left:0;
   width:100%;height:100%;
   background:url('bda2.jpeg') center/100px repeat fixed;
-  filter:grayscale(5%) brightness(1.15) sepia(55%) saturate(1.3) hue-rotate(25deg);
-  opacity:0.35;
+  filter:grayscale(5%) brightness(1.1) sepia(50%) saturate(1.2) hue-rotate(25deg);
+  opacity:0.3;
   z-index:0;
 }
 .bg-collage::after{
@@ -30,11 +30,11 @@ body{
   position:absolute;
   inset:0;
   background:linear-gradient(120deg,rgba(255,230,150,0.15),rgba(255,240,200,0.2),rgba(240,200,120,0.15));
-  animation:goldenGlow 12s ease-in-out infinite alternate;
+  animation:goldenGlow 10s ease-in-out infinite alternate;
 }
 @keyframes goldenGlow{
   from{opacity:0.15;}
-  to{opacity:0.35;}
+  to{opacity:0.3;}
 }
 
 /* --- HERO --- */
@@ -55,7 +55,7 @@ body{
   content:"";
   position:absolute;
   inset:0;
-  background:rgba(255,255,255,0.35);
+  background:rgba(255,255,255,0.3);
   backdrop-filter:brightness(0.95);
   z-index:1;
 }
@@ -70,7 +70,7 @@ body{
   background-size:300% 300%;
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
-  animation:shine 8s linear infinite, fadeDown 2s ease forwards;
+  animation:shine 6s linear infinite, fadeDown 1.2s ease forwards;
   text-shadow:0 3px 6px rgba(180,150,50,0.25);
   font-weight:700;
   letter-spacing:1px;
@@ -88,14 +88,14 @@ body{
   margin-top:15px;
   line-height:1.6;
   opacity:0;
-  animation:fadeUp 2s ease 0.8s forwards;
+  animation:fadeUp 1.2s ease 0.6s forwards;
 }
 .line{
   width:120px;height:2px;
   background:linear-gradient(to right,#d4af37,#f6e27a,#d4af37);
   margin:20px auto;
   opacity:0;
-  animation:fadeUp 2s ease 0.5s forwards;
+  animation:fadeUp 1s ease 0.4s forwards;
 }
 
 /* --- BOTÓN DORADO CON FLECHA HACIA ABAJO --- */
@@ -104,7 +104,7 @@ body{
   margin-top: 40px;
   text-align: center;
   z-index: 3;
-  animation: fadeUp 2s ease 1s forwards;
+  animation: fadeUp 1.2s ease 0.8s forwards;
 }
 .cta-button {
   display: inline-flex;
@@ -120,7 +120,7 @@ body{
   padding: 12px 26px;
   cursor: pointer;
   box-shadow: 0 6px 12px rgba(200, 160, 50, 0.35);
-  transition: all 0.3s ease;
+  transition: all 0.25s ease;
   letter-spacing: 0.3px;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
 }
@@ -132,21 +132,15 @@ body{
 .arrow {
   font-size: 1.3rem;
   color: #fff;
-  animation: arrowPulse 1.2s infinite;
+  animation: arrowPulse 1s infinite;
 }
 @keyframes arrowPulse {
   0%, 100% { transform: translateY(0); opacity: 1; }
   50% { transform: translateY(6px); opacity: 0.8; }
 }
 @media (max-width: 600px) {
-  .cta-button {
-    font-size: 0.9rem;
-    padding: 10px 20px;
-    border-radius: 30px;
-  }
-  .arrow {
-    font-size: 1.1rem;
-  }
+  .cta-button {font-size: 0.9rem;padding: 10px 20px;border-radius: 30px;}
+  .arrow {font-size: 1.1rem;}
 }
 
 /* --- SECCIONES --- */
@@ -166,13 +160,10 @@ body{
   padding:40px 25px;
   backdrop-filter:blur(6px);
   opacity:0;
-  transform:translateY(50px);
-  transition:all 1s ease;
+  transform:translateY(30px);
+  transition:opacity .6s ease, transform .6s ease;
 }
-.info section.visible{
-  opacity:1;
-  transform:translateY(0);
-}
+.info section.visible{opacity:1;transform:translateY(0);}
 .info h2{
   font-family:'Playfair Display',serif;
   font-size:1.8rem;
@@ -181,7 +172,7 @@ body{
   -webkit-text-fill-color:transparent;
   font-weight:700;
   margin-bottom:15px;
-  animation:fadeDown 1.5s ease;
+  animation:fadeDown 1s ease;
 }
 .info p{
   font-size:1.05rem;
@@ -203,12 +194,9 @@ body{
   opacity:0;
   transition:all 1s ease;
 }
-.info img.visible{
-  transform:scale(1);
-  opacity:1;
-}
+.info img.visible{transform:scale(1);opacity:1;}
 
-/* --- BOTÓN SECUNDARIO --- */
+/* --- BOTONES --- */
 a{
   color:#7b6400;
   text-decoration:none;
@@ -226,28 +214,25 @@ a:hover{color:#a07f00;border-color:#a07f00;}
   text-decoration:none;
   font-weight:600;
   letter-spacing:0.5px;
-  transition:all .3s ease;
+  transition:all .25s ease;
   box-shadow:0 6px 12px rgba(200,160,50,0.25);
 }
-.button:hover{
-  transform:scale(1.05);
-  background:linear-gradient(135deg,#f1cc52,#d4af37);
-}
+.button:hover{transform:scale(1.05);background:linear-gradient(135deg,#f1cc52,#d4af37);}
 
 /* --- ROSAS DORADAS CAYENDO --- */
 .rose{
   position:fixed;
   top:-10%;
-  width:28px;
-  opacity:0.4;
+  width:24px;
+  opacity:0.3;
   animation:fall linear infinite;
-  filter:drop-shadow(0 0 5px rgba(210,160,60,0.9));
+  filter:drop-shadow(0 0 4px rgba(210,160,60,0.8));
   z-index:5;
   pointer-events:none;
 }
 @keyframes fall{
   0%{transform:translateY(0) rotate(0);}
-  100%{transform:translateY(110vh) rotate(360deg);}
+  100%{transform:translateY(105vh) rotate(360deg);}
 }
 
 /* --- FOOTER --- */
@@ -263,8 +248,8 @@ footer{
 }
 
 /* --- ANIMACIONES BASE --- */
-@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
-@keyframes fadeDown{from{opacity:0;transform:translateY(-30px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeDown{from{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:translateY(0)}}
 </style>
 </head>
 <body>
@@ -310,11 +295,9 @@ footer{
     <h2>Confirma tu Asistencia</h2>
     <p>Tu presencia es el mejor regalo que podemos recibir.</p>
 
-    <!-- Botón principal -->
     <button class="button" id="confirmarBtn">Confirmar por WhatsApp 💬</button>
 
-    <!-- Menú emergente -->
-    <div id="menuConfirmar" style="display:none;margin-top:15px;">
+    <div id="menuConfirmar" style="display:none;margin-top:15px;transition:opacity .25s ease;">
       <a class="button" href="https://wa.me/5215516569477?text=Confirmo%20mi%20asistencia%20a%20las%20Bodas%20de%20Oro%20de%20Josefina%20y%20Fernando%20💛" target="_blank">Confirmar con Israel 💛</a><br><br>
       <a class="button" href="https://wa.me/5215549293167?text=Confirmo%20mi%20asistencia%20a%20las%20Bodas%20de%20Oro%20de%20Josefina%20y%20Fernando%20💛" target="_blank">Confirmar con Maribel 💛</a>
     </div>
@@ -331,26 +314,24 @@ footer{
 <audio id="bg-music" src="Toda Una Vida.mp3" preload="auto" loop></audio>
 
 <script>
-/* Rosas cayendo */
-for(let i=0;i<30;i++){
+/* 🌹 Rosas cayendo (optimizado) */
+for(let i=0;i<12;i++){
   const rose=document.createElement('img');
   rose.src='rosa.png';
   rose.classList.add('rose');
   rose.style.left=Math.random()*100+'vw';
-  rose.style.animationDuration=6+Math.random()*8+'s';
-  rose.style.width=(20+Math.random()*20)+'px';
-  rose.style.opacity=0.25+Math.random()*0.3;
+  rose.style.animationDuration=6+Math.random()*6+'s';
+  rose.style.width=(18+Math.random()*20)+'px';
+  rose.style.opacity=0.3+Math.random()*0.2;
   document.body.appendChild(rose);
 }
 
-/* Animaciones en scroll */
-const observer = new IntersectionObserver(entries=>{
+/* ⚙️ Animaciones en scroll */
+const observer=new IntersectionObserver(entries=>{
   entries.forEach(entry=>{
-    if(entry.isIntersecting){
-      entry.target.classList.add('visible');
-    }
+    if(entry.isIntersecting) entry.target.classList.add('visible');
   });
-},{threshold:0.2});
+},{threshold:0.1});
 document.querySelectorAll('.info section, .info img').forEach(el=>observer.observe(el));
 
 /* 🎶 Click para reproducir música y bajar */
@@ -365,21 +346,24 @@ let musicStarted=false;
 function tryPlayMusic(){
   if(musicStarted) return;
   musicStarted=true;
-  music.volume=0;
-  music.play().then(()=>fadeInMusic()).catch(()=>console.log("Autoplay bloqueado"));
-}
-function fadeInMusic(){
-  let vol=0;
-  const fade=setInterval(()=>{
-    if(vol<0.9){vol+=0.05;music.volume=vol;}
-    else clearInterval(fade);
-  },200);
+  music.volume=0.6;
+  music.play().catch(()=>console.log("Autoplay bloqueado"));
 }
 
-/* --- Menú de confirmación --- */
-document.getElementById('confirmarBtn').addEventListener('click',()=>{
-  const menu = document.getElementById('menuConfirmar');
-  menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
+/* 💬 Menú de confirmación */
+const btnConfirmar=document.getElementById('confirmarBtn');
+const menuConfirmar=document.getElementById('menuConfirmar');
+btnConfirmar.addEventListener('click',()=>{
+  if(menuConfirmar.style.display==='block'){
+    menuConfirmar.style.opacity=0;
+    setTimeout(()=>menuConfirmar.style.display='none',150);
+  }else{
+    menuConfirmar.style.display='block';
+    menuConfirmar.style.opacity=0;
+    requestAnimationFrame(()=>{
+      menuConfirmar.style.opacity=1;
+    });
+  }
 });
 </script>
 
